@@ -2,6 +2,20 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :line_name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "linename" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nick_name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "nickname" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
