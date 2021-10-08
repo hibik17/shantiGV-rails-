@@ -19,6 +19,29 @@
 //= require semantic-ui
 //= require_tree .
 
-$(function () {
-  $(".ui.dropdown").dropdown();
+$(document).ready(function () {
+  $(".search_button").hover(
+    function () {
+      $(this).transition("jiggle");
+    },
+    function () {}
+  );
+});
+
+$(document).ready(function () {
+  $(".start_button").hover(
+    function () {
+      $(this).transition("jiggle");
+    },
+    function () {}
+  );
+});
+
+$(document).ready(function () {
+  $(".header_item").hover(
+    function () {
+      $(this).transition("jiggle");
+    },
+    function () {}
+  );
 });
