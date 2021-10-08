@@ -67,3 +67,6 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
+
+# cssimport
+gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
