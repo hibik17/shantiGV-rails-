@@ -25,15 +25,18 @@
                 <button class="ui Orange Mini search_button">Search</button>
               <% else %>
                 <a class="ui inverted button">Log in</a>
-                <a class="ui inverted button">Sign Up</a>
+                <a class="ui inverted button" style="margin-left: 20px;">Sign Up</a>
               <% end %>
             </div>
           </div>
+        </div>
       </div>
     </div>
     <%= yield %>
-    <%# <footer class="ui inverted vertical segment">
-      <a href="#">shianti instagram</a>
-    </footer> %>
+    <div class="ui footer center aligned horizontal divider">
+      <div class="ui grid">
+        <div class="eight column  position: absolute; bottom: 0; ">&copy; shanti shanti</div>
+      </div>
+    </div>
   </body>
 </html>

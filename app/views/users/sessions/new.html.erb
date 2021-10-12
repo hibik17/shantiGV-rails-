@@ -1,12 +1,12 @@
-<div class="ui" style="width: 70%; margin:0 auto;">
-  <h1 class="ui center aligned header" style="margin-top: 30px;">Log in</h1>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="ui form">
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-      <div class="field">
+<div class="ui text container">
+<h1 style="margin-top: 20px;">LOG IN</h1>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="ui form" style="margin-top: 30px;">
+  <div class="field">
+    <%= f.label "name" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <div class="field">
         <%= f.label :password %><br />
         <%= f.password_field :password, autocomplete: "current-password" %>
       </div>
@@ -16,8 +16,12 @@
           <%= f.label :remember_me %>
         </div>
       <% end %>
-      <%= f.submit "Log in", class: "ui button"%>
-    </form>
-  <% end %>
+      <div class="field">
+      <%= f.submit "Log in", class: "ui button orange"%>
+      </div>
+ </div>
+ <% end %>
+ <div class="ui three fileds" style="margin-top: 50px;">
+   <%= render "users/shared/links" %>
 </div>
-<%= render "users/shared/links" %>
+ </div>
