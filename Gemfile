@@ -74,3 +74,10 @@ gem 'jquery-rails'
 
 # validtion message translate to japanese
 gem 'rails-i18n'
+
+# image file administration
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+
+#debug tool
+gem 'pry-rails'

@@ -1,6 +1,6 @@
 <div class="ui form center aligned ">
   <%= form_with model: post, url: user_posts_path, local:true do |f| %>
-    <div class="field"  style="margin-top: 80px;">
+    <div class="field"  style="margin-top: 30px;">
       <%= f.label :genre %>
       <%= f.collection_select :genre_id, Genre.all, :id, :name %>
     </div>
@@ -10,7 +10,7 @@
     </div>
     <div class="field">
       <%= f.label :image %>
-      <%= f. :image_id %>
+      <%= f.attachment_field :image %>
     </div>
     <div class="field">
       <%= f.label :title %>

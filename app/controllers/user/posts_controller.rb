@@ -12,6 +12,7 @@ class User::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_parameter)
+    binding.pry
     @post.user_id = current_user.id
     if @post.save
       flash[:notice] = "投稿に成功しました"
@@ -29,6 +30,6 @@ class User::PostsController < ApplicationController
 
   private
   def post_parameter
-    params.require(:post).permit(:title, :content, :genre_id, :country_id, :image_id)
+    params.require(:post).permit(:title, :content, :genre_id, :country_id, :image)
   end
 end
