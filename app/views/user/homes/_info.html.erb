@@ -1,0 +1,29 @@
+<ul class="ui container segment">
+  <div>
+    <img src="https://react.semantic-ui.com/images/wireframe/square-image.png" class="ui centered circular image"/>
+  </div>
+  <%# user name %>
+  <li class="ui list">
+    <div class="ui grid">
+      <div class="four wide column"><i class="user icon"></i>User name:</div>
+      <div class="twelve wide column"><%= current_user.name %></div>
+    </div>
+  </li>
+  <%# user email %>
+  <li class="ui list">
+    <div class="ui grid">
+      <div class="four wide column"><i class="envelope outline icon"></i>User email</div>
+      <div class="twelve wide column"><%= current_user.email %></div>
+    </div>
+  </li>
+  <%# 登録日 %>
+  <li class="ui list">
+    <div class="ui grid">
+      <div class="four wide column"><i class="registered outline icon"></i>Registration date</div>
+      <div class="twelve wide column"><%= current_user.created_at.strftime('%Y/%m/%d') %></div>
+    </div>
+  </li>
+  <div class="center md-left mt4">
+    <%= link_to "Log out", destroy_user_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}, class: "ui button basic violet" %>
+  </div>
+</ul>

@@ -5,5 +5,6 @@ class User::HomesController < ApplicationController
   end
 
   def mypage
+    @posts = current_user.posts
   end
 end
