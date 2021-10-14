@@ -12,7 +12,7 @@
       </div>
     <% end %>
   <% else %>
-    <p style="color: red;">まだ投稿はありません。初めての投稿をしてみましょう!</p>
-    <%= link_to "投稿をしてみよう!", new_user_post_path, class: 'ui button orange' %>
+    <h4 style="color: red;">まだ投稿はありません。初めての投稿をしてみましょう!</h4>
+    <div style="margin-left: 15px;"><%= link_to "投稿をしてみよう!", user_posts_path, class: 'ui button orange' %></div>
   <% end %>
 </div>
