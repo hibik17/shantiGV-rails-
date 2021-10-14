@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'countries/new'
+    get 'countries/index'
+    get 'countries/edit'
+  end
+  namespace :admin do
+    get 'genres/new'
+    get 'genres/edit'
+    get 'genres/index'
+  end
   root :to => 'user/homes#top'
 
   devise_for :admins

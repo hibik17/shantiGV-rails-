@@ -1,13 +1,17 @@
 <div class="ui form center aligned ">
   <%= form_with model: post, url: user_posts_path, local:true do |f| %>
-    <div class="field"  style="margin-top: 100px;>
+    <div class="field"  style="margin-top: 80px;">
       <%= f.label :genre %>
-      <%#= f.select :genre_id, Genre.all, :name, :id %>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name %>
     </div>
     <div class="field">
       <%= f.label :country %>
+      <%= f.collection_select :country_id, Country.all, :id, :name %>
     </div>
-    <div class="">
+    <div class="field">
+      <%= f.label :image %>
+      <%= f. :image_id %>
+    </div>
     <div class="field">
       <%= f.label :title %>
       <%= f.text_field :title %>
@@ -16,8 +20,8 @@
       <%= f.label :content %>
       <%= f.text_area :content %>
     </div>
-    <div class="field">
-      <%= f.submit "作成", class: 'ui button orange', style: 'margin-left: 500px;' %>
+    <div class="field" style="margin-bottom: 60px;">
+      <%= f.submit "作成", class: 'ui button orange', style: 'margin-top: 20px; margin-left: 500px;' %>
     </div>
   <% end %>
 </div>
