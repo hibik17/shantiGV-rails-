@@ -1,0 +1,23 @@
+<div class="ui form center aligned ">
+  <%= form_with model: post, url: user_posts_path, local:true do |f| %>
+    <div class="field"  style="margin-top: 100px;>
+      <%= f.label :genre %>
+      <%#= f.select :genre_id, Genre.all, :name, :id %>
+    </div>
+    <div class="field">
+      <%= f.label :country %>
+    </div>
+    <div class="">
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+    </div>
+    <div class="field">
+      <%= f.submit "作成", class: 'ui button orange', style: 'margin-left: 500px;' %>
+    </div>
+  <% end %>
+</div>

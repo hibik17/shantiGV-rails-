@@ -1,15 +1,17 @@
-<%= form_with model: @post, url: user_posts_path, local:true do |f| %>
-  <%= f.label :genre %>
-  <%= f.select :genre_id, Genre.all, :name, :id %>
-
-  <%= f.label :country %>
-  <%= soo
-  %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-
-  <%= f.submit "作成" %>
-<% end %>
+<div class="ui container ">
+  <div class="center aligned">
+    <% if @post.errors.any? %>
+      <div class="ui warning message" style="margin-top: 50px;">
+        <div class="alert">
+          <h1 class="header"><%= @post.errors.count %>件のエラーが発生しています</h1>
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <%= render 'newpost', post: @post %>
+  </div>
+</div>

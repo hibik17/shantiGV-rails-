@@ -71,3 +71,6 @@ gem "omniauth-rails_csrf_protection"
 # cssimport
 gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 gem 'jquery-rails'
+
+# validtion message translate to japanese
+gem 'rails-i18n'
