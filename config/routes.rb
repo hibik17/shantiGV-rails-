@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root :to => 'user/homes#top'
 
   devise_for :admins
@@ -7,5 +6,11 @@ Rails.application.routes.draw do
     # deviseの階層を編集した場合は適宜pathを編集してください
     omniauth_callbacks: "users/omniauth_callbacks"
   }
+
+  namespace :user do
+    resources :posts
+  end
+
+  get 'user/homes/mypage'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

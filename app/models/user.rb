@@ -21,4 +21,7 @@ class User < ApplicationRecord
       user
     end
 
+    # アソシエーションの記述
+    has_many :posts
+
 end
