@@ -21,6 +21,13 @@
         <%= f.label :content %>
         <%= f.text_area :content %>
       </div>
+      <div class="field">
+        <%= f.label :post_user %>
+        <%= f.label :post_name, "実名", {value: :real_name, style: "display: inline-block;"} %>
+        <%= f.radio_button :post_name, :real_name %>
+        <%= f.label :post_name, "ニックネーム", {value: :nick_name, style: "display: inline-block;"} %>
+        <%= f.radio_button :post_name, :nick_name %>
+      </div>
       <div class="field" style="margin-bottom: 10px;">
         <%= f.submit class: 'ui button orange', style: 'margin-top: 20px; margin-left: 500px;' %>
       </div>
@@ -46,6 +53,13 @@
       <div class="field">
         <%= f.label :content %>
         <%= f.text_area :content %>
+      </div>
+      <div class="field">
+        <%= f.label :post_name %>
+        <%= f.label :post_name, "実名", {value: :real_name, style: "display: inline-block;"} %>
+        <%= f.radio_button :post_name, :real_name %>
+        <%= f.label :post_name, "ニックネーム", {value: :nick_name, style: "display: inline-block;"} %>
+        <%= f.radio_button :post_name, :nick_name %>
       </div>
       <div class="field" style="margin-bottom: 10px;">
         <%= f.submit class: 'ui button orange', style: 'margin-top: 20px; margin-left: 500px;' %>

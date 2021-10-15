@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_145454) do
     t.integer "country_id"
     t.string "image_id"
     t.string "title"
+    t.string "post_user"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,12 +56,11 @@ ActiveRecord::Schema.define(version: 2021_10_14_145454) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.string "line_name"
+    t.text "profile"
+    t.string "profile_image_id"
     t.string "nick_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

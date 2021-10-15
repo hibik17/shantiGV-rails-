@@ -17,7 +17,7 @@ class User::UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:notice] = "編集が完了しました"
-      redirect_to user_users_edit_path
+      redirect_to user_user_path(current_user.id)
     else
       render :edit
     end
@@ -25,7 +25,7 @@ class User::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :nick_name, :email, :image)
+    params.require(:user).permit(:name, :nick_name, :profile, :profile_image)
   end
 
   def correct_user
@@ -37,6 +37,6 @@ class User::UsersController < ApplicationController
   end
 
   def find_user
-    @user = User.find(parmas[:id])
+    @user = User.find(params[:id])
   end
 end

@@ -1,20 +1,4 @@
 Rails.application.routes.draw do
-  namespace :user do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
-  end
-  namespace :admin do
-    get 'countries/new'
-    get 'countries/index'
-    get 'countries/edit'
-  end
-  namespace :admin do
-    get 'genres/new'
-    get 'genres/edit'
-    get 'genres/index'
-  end
   root :to => 'user/homes#top'
 
   devise_for :admins
@@ -23,9 +7,15 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
+  namespace :admin do
+    resources :countries, only: [:new, :index, :edit]
+    resources :genres, only: [:new, :edit, :index]
+  end
+
   namespace :user do
     get 'homes/mypage'
     resources :posts
+    resources :users, except: [:destroy, :create, :new]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

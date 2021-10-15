@@ -18,6 +18,21 @@ class User::PostsController < ApplicationController
   def create
     @post = Post.new(post_parameter)
     @post.user_id = current_user.id
+
+    # insert post_user
+    if params[:post][:post_name] == 'real_name'
+      binding.pry
+      @post.post_user = current_user.name
+    elsif params[:post][:post_name] == 'nick_name'
+      if current_user.nick_name == nil
+        flash[:notice] = "ニックネームが登録されておりません。ユーザー編集画面から登録をしましょう!"
+        # nick_name登録のフラグ
+        @nick_name_active = false
+      else
+        @post.post_user = current_user.nick_name
+      end
+    end
+
     if @post.save
       flash[:notice] = "投稿に成功しました"
       redirect_to user_post_path(@post)
@@ -41,7 +56,7 @@ class User::PostsController < ApplicationController
 
   private
   def post_parameter
-    params.require(:post).permit(:title, :content, :genre_id, :country_id, :image)
+    params.require(:post).permit(:title, :content, :genre_id, :country_id, :image, :post_user)
   end
 
   def correct_user

@@ -23,7 +23,13 @@
       <div class="twelve wide column"><%= current_user.created_at.strftime('%Y/%m/%d') %></div>
     </div>
   </li>
-  <div class="center md-left mt4">
-    <%= link_to "Log out", destroy_user_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}, class: "ui button basic violet" %>
+  <h4 class="ui horizontal inverted divider" style="margin-top: 40px; color: black;">Menu</h4>
+  <div class="ui two grid">
+    <div class="eight wide column" style="padding-left: 300px;">
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}, class: "ui button basic violet" %>
+    </div>
+    <div class="eight wide column" style="padding-right: 300px;">
+      <%= link_to "Edit", edit_user_user_path(current_user.id), class: 'ui button basic violet' %>
+    </div>
   </div>
 </ul>

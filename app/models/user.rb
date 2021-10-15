@@ -6,12 +6,9 @@ class User < ApplicationRecord
   omniauth_providers: [:google_oauth2]
 
   protected
-  # 以下を追加
     def self.from_omniauth(access_token)
       data = access_token.info
       user = User.where(email: data['email']).first
-
-      # Uncomment the section below if you want users to be created if they don't exist
       unless user
           user = User.create(name: data['name'],
              email: data['email'],
@@ -21,7 +18,11 @@ class User < ApplicationRecord
       user
     end
 
-    # アソシエーションの記述
+    # association
     has_many :posts
-
+    # validates
+    validates :name, presence: true
+    validates :email, presence: true
+    # image setting
+    attachment :profile_image
 end

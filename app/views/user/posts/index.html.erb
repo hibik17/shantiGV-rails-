@@ -9,10 +9,16 @@
             <% @post.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
+            <% if @nick_name_active == false %>
+              <li>
+                ニックネームが登録されておりません。もしニックネームを使用する場合は登録しましょう
+                <%= link_to "登録する", edit_user_user_path, class: 'ui button red' %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
     <% end %>
-    <%= render 'newpost', post: @post %>
+    <%= render 'post', post: @post %>
   </div>
 </div>

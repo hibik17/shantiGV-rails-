@@ -4,7 +4,7 @@
       <div class="ui large secondary inverted pointing menu">
         <%= link_to "Mypage", user_homes_mypage_path, class: "item header_item" %>
         <%= link_to "NewPost", user_posts_path, class: "item header_item" %>
-        <%= link_to "Users", user_users_index_path, class: "item header_item" %>
+        <%= link_to "Users", user_users_path, class: "item header_item" %>
         <a class="item header_item">Genres</a>
         <div class="right item">
           <% if user_signed_in? %>
