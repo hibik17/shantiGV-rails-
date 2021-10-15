@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :genre
   belongs_to :country
+  has_many :favorites, dependent: :destroy
 
   #validatations
   validates :title, presence: true
@@ -12,4 +13,9 @@ class Post < ApplicationRecord
   validates :post_user, presence: true
 
   attachment :image
+
+  # いいねしているかどうかの判定メソッド
+  def favorite_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
 end
