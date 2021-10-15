@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :user do
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
+    get 'users/update'
+  end
   namespace :admin do
     get 'countries/new'
     get 'countries/index'

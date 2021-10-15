@@ -1,4 +1,16 @@
 <div class="ui container">
   <h4 class="ui horizontal inverted divider" style="margin-top: 40px; color: black;">投稿編集画面</h4>
+  <% if @post.errors.any? %>
+    <div class="ui warning message" style="margin-top: 50px;">
+      <div class="alert">
+        <h1 class="header"><%= @post.errors.count %>件のエラーが発生しています</h1>
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
   <%= render 'newpost', post: @post %>
 </div>

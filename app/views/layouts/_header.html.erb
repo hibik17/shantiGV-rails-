@@ -1,0 +1,22 @@
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment">
+    <div class="ui container">
+      <div class="ui large secondary inverted pointing menu">
+        <%= link_to "Mypage", user_homes_mypage_path, class: "item header_item" %>
+        <%= link_to "NewPost", user_posts_path, class: "item header_item" %>
+        <%= link_to "Users", user_users_index_path, class: "item header_item" %>
+        <a class="item header_item">Genres</a>
+        <div class="right item">
+          <% if user_signed_in? %>
+            <i class="search icon"></i>
+            <input type="text" placeholder="Search...">
+            <button class="ui Orange Mini search_button">Search</button>
+          <% else %>
+            <%= link_to "Log in", new_user_session_path, class:"ui inverted button", style: "margin-right: 20px;" %>
+            <%= link_to "Sign up", new_user_registration_path, class:"ui inverted button"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

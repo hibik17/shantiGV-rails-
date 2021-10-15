@@ -1,27 +1,55 @@
 <div class="ui form center aligned ">
-  <%= form_with model: post, url: user_posts_path, local:true do |f| %>
-    <div class="field"  style="margin-top: 30px;">
-      <%= f.label :genre %>
-      <%= f.collection_select :genre_id, Genre.all, :id, :name %>
-    </div>
-    <div class="field">
-      <%= f.label :country %>
-      <%= f.collection_select :country_id, Country.all, :id, :name %>
-    </div>
-    <div class="field">
-      <%= f.label :image %>
-      <%= f.attachment_field :image %>
-    </div>
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
-    <div class="field">
-      <%= f.label :content %>
-      <%= f.text_area :content %>
-    </div>
-    <div class="field" style="margin-bottom: 10px;">
-      <%= f.submit class: 'ui button orange', style: 'margin-top: 20px; margin-left: 500px;' %>
-    </div>
+  <% if post.id == nil %>
+    <%= form_with model: post, url: user_posts_path, local:true do |f| %>
+      <div class="field"  style="margin-top: 30px;">
+        <%= f.label :genre %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "投稿のジャンルを選択してください"}, {style: "color: red;"} %>
+      </div>
+      <div class="field">
+        <%= f.label :country %>
+        <%= f.collection_select :country_id, Country.all, :id, :name, {prompt: "国を選択してください"}, {style: "color: red;"} %>
+      </div>
+      <div class="field">
+        <%= f.label :image %>
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="field">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <%= f.label :content %>
+        <%= f.text_area :content %>
+      </div>
+      <div class="field" style="margin-bottom: 10px;">
+        <%= f.submit class: 'ui button orange', style: 'margin-top: 20px; margin-left: 500px;' %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= form_with model: post, url: user_post_path(post.id), local:true do |f| %>
+      <div class="field"  style="margin-top: 30px;">
+        <%= f.label :genre %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "投稿のジャンルを選択してください"}, {style: "color: red;"} %>
+      </div>
+      <div class="field">
+        <%= f.label :country %>
+        <%= f.collection_select :country_id, Country.all, :id, :name, {prompt: "国を選択してください"}, {style: "color: red;"} %>
+      </div>
+      <div class="field">
+        <%= f.label :image %>
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="field">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <%= f.label :content %>
+        <%= f.text_area :content %>
+      </div>
+      <div class="field" style="margin-bottom: 10px;">
+        <%= f.submit class: 'ui button orange', style: 'margin-top: 20px; margin-left: 500px;' %>
+      </div>
+    <% end %>
   <% end %>
 </div>
