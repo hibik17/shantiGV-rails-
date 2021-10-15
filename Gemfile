@@ -84,3 +84,6 @@ gem 'pry-rails'
 
 #page nation
 gem 'kaminari'
+
+# user_status
+gem 'paranoia'

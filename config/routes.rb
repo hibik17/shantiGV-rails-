@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   namespace :user do
     get 'homes/mypage'
     resources :posts
-    resources :users, except: [:destroy, :create, :new]
+    resources :users, except: [:create, :new] do
+      get 'withdraw'
+    end
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

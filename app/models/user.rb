@@ -25,4 +25,7 @@ class User < ApplicationRecord
     validates :email, presence: true
     # image setting
     attachment :profile_image
+
+    #paranoia
+    acts_as_paranoid
 end

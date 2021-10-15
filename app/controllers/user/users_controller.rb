@@ -2,7 +2,7 @@ class User::UsersController < ApplicationController
 
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update]
-  before_action :find_user, except: [:index]
+  before_action :find_user, except: [:index, :withdraw]
 
   def index
     @users = User.all.order(created_at: :desc).page(params[:page])
@@ -20,6 +20,20 @@ class User::UsersController < ApplicationController
       redirect_to user_user_path(current_user.id)
     else
       render :edit
+    end
+  end
+
+  def withdraw
+  end
+
+  def destroy
+    @user = current_user
+    if @user.destroy
+      flash[:notice] = '退会処理が完了しました。'
+      redirect_to root_path
+    else
+      flash[:notice] = '退会処理に失敗しました。もう一度やり直してください'
+      render :withdraw
     end
   end
 

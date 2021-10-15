@@ -49,11 +49,14 @@
     </div>
   </li>
   <h4 class="ui horizontal inverted divider" style="margin-top: 40px; color: black;">Menu</h4>
-  <div class="ui two grid">
-    <div class="eight wide column" style="padding-left: 300px;">
+  <div class="ui three grid">
+    <div class="six wide column">
       <%= link_to "Log out", destroy_user_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}, class: "ui button basic violet" %>
     </div>
-    <div class="eight wide column" style="padding-right: 300px;">
+    <div class="five wide column" style="padding-right: 80px;">
+      <%= link_to "Withdraw", user_user_withdraw_path(current_user.id), class: 'ui button basic violet' %>
+    </div>
+    <div class="five wide column">
       <%= link_to "Edit", edit_user_user_path(current_user.id), class: 'ui button basic violet' %>
     </div>
   </div>
