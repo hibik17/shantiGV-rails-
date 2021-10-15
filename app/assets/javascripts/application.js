@@ -45,3 +45,7 @@ $(document).ready(function () {
     function () {}
   );
 });
+
+$(".favorite_image").dimmer({
+  on: "hover",
+});

@@ -2,9 +2,13 @@ class User::PostsController < ApplicationController
 
   before_action :correct_user, only: [:edit, :update, :delete]
   before_action :authenticate_user!
+  
+  def new
+    @post = Post.new
+  end
 
   def index
-    @post = Post.new
+    @posts = Post.all.order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -21,7 +25,6 @@ class User::PostsController < ApplicationController
 
     # insert post_user
     if params[:post][:post_name] == 'real_name'
-      binding.pry
       @post.post_user = current_user.name
     elsif params[:post][:post_name] == 'nick_name'
       if current_user.nick_name == nil
@@ -51,7 +54,7 @@ class User::PostsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
   end
 
   private

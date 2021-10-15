@@ -1,30 +1,21 @@
 <div class="ui container" style='margin-top: 30px; margin-bottom: 50px;'>
   <div class="ui three cards">
     <% @users.each do |user| %>
-      <div class="ui special cards" style="margin-left: 50px;">
-        <div class="card">
-          <div class="blurring dimmable image">
-            <div class="ui dimmer">
-              <div class="content">
-                <div class="center">
-                  <div class="ui inverted button">Add Friend</div>
-                </div>
-              </div>
-            </div>
-            <%= attachment_image_tag user, :profile_image, fallback: 'noimage.png', class: 'image' %>
+      <div class="ui card">
+        <div class="ui slide masked reveal image">
+          <%= attachment_image_tag user, :profile_image, fallback: 'noimage', class: 'visible content' %>
+          <%= link_to "follow", user_posts_path, class: 'ui green button hidden content'%>
+        </div>
+        <div class="content">
+          <a class="header">Name: <%= user.name %></a>
+          <div class="meta">
+            <span class="date">登録日: <%= user.created_at.strftime('%Y/%m/%d') %></span>
           </div>
-          <div class="content">
-            <a class="header"><%= user.name %></a>
-            <div class="meta">
-              <span class="date"><%= user.profile %></span>
-            </div>
-          </div>
-          <div class="extra content">
-            <span>
-              <i class="images outline icon"></i>
-              <%= user.posts.count %> posts
-            </span>
-          </div>
+        </div>
+        <div class="extra content">
+          <%= link_to user_user_path(user.id) do %>
+            <i class="book icon"></i><%= user.posts.count %> posts
+          <% end %>
         </div>
       </div>
     <% end %>
@@ -33,3 +24,5 @@
     <%= paginate @users %>
   </div>
 </div>
+
+

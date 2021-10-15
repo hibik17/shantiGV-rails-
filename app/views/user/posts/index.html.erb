@@ -1,24 +1,36 @@
-<div class="ui container ">
-  <div class="center aligned">
-    <h4 class="ui horizontal inverted divider" style="margin-top: 40px; color: black;">新規投稿作成画面</h4>
-    <% if @post.errors.any? %>
-      <div class="ui warning message" style="margin-top: 50px;">
-        <div class="alert">
-          <h1 class="header"><%= @post.errors.count %>件のエラーが発生しています</h1>
-          <ul>
-            <% @post.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+<div class="ui container" style='margin-top: 30px; margin-bottom: 50px;'>
+  <div class="ui three cards">
+    <% @posts.each do |post| %>
+      <div class="ui card">
+        <div class="content">
+          <div class="right floated meta"><%= post.created_at.strftime('%Y/%m/%d') %></div>
+          <%= attachment_image_tag post.user, :profile_image, fallback: 'noimage', class: 'ui avatar' %>
+          <%= post.post_user %>
+        </div>
+        <div class="image">
+          <%= attachment_image_tag post, :image, fallback: 'nopost_image' %>
+        </div>
+        <div class="content">
+          <span class="right floated">
+            <i class="heart outline like icon"></i>
+            0 Likes
+          </span>
+          <i class="comment icon"></i>
+          0 comments
+        </div>
+        <div class="extra content">
+          <div class="ui large transparent left icon">
+            <%= link_to  user_post_path(post.id) do %>
+              <p>Add Comment...</p>
             <% end %>
-            <% if @nick_name_active == false %>
-              <li>
-                ニックネームが登録されておりません。もしニックネームを使用する場合は登録しましょう
-                <%= link_to "登録する", edit_user_user_path, class: 'ui button red' %>
-              </li>
-            <% end %>
-          </ul>
+          </div>
         </div>
       </div>
     <% end %>
-    <%= render 'post', post: @post %>
+  </div>
+  <div style="margin-top: 50px; text-align:center;">
+    <%= paginate @posts %>
   </div>
 </div>
+
+

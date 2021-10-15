@@ -1,6 +1,6 @@
 <ul class="ui container segment">
   <div>
-    <img src="https://react.semantic-ui.com/images/wireframe/square-image.png" class="ui centered circular image"/>
+    <%= attachment_image_tag current_user, :profile_image, fallback: 'noimage.png', class: 'ui medium centered circular image' %>
   </div>
   <%# user name %>
   <li class="ui list">

@@ -1,26 +1,33 @@
 <div class="ui four cards">
   <% if @posts.count >= 1 %>
     <% @posts.each do |post| %>
-      <div class="card">
-        <div class="image">
-          <%= attachment_image_tag post, :image, fallback: "noimage.png"%>
+      <div class="ui card">
+        <div class="content">
+          <div class="right floated meta"><%= post.created_at.strftime('%Y/%m/%d') %></div>
+          <%= attachment_image_tag post.user, :profile_image, fallback: 'noimage', class: 'ui avatar' %>
+          <%= post.post_user %>
         </div>
-        <ul class="ui left aligned">
-          <li class="ui list"><p class="ui label">title</p> <%= post.title %></li>
-          <li class="ui list right alinged"><p class="ui label">content</p><%= post.content %></li>
-        </ul>
-        <div class="ui grid">
-          <div class="eight wide column">
-            <%= link_to "edit", edit_user_post_path(post), class: 'ui button orange' %>
-          </div>
-          <div class="eight wide column">
-            <%= link_to 'delete', user_post_path(post), class: 'ui button red', data: {confirm: '本当に削除しますか'}, method: :delete %>
+        <div class="image">
+          <%= attachment_image_tag post, :image, fallback: 'nopost_image' %>
+        </div>
+        <div class="content">
+          <span class="right floated">
+            <i class="heart outline like icon"></i>
+            0 Likes
+          </span>
+          <i class="comment icon"></i>
+          0 comments
+        </div>
+        <div class="extra content">
+          <div class="ui large transparent left icon">
+            <%= link_to "Delete", user_post_path(post.id), method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'ui button red' %>
+            <%= link_to "Edit", edit_user_post_path(post.id), class: 'ui button orange' %>
           </div>
         </div>
       </div>
     <% end %>
   <% else %>
     <h4 style="color: red;">まだ投稿はありません。初めての投稿をしてみましょう!</h4>
-    <div style="margin-left: 15px;"><%= link_to "投稿をしてみよう!", user_posts_path, class: 'ui button orange' %></div>
+    <div style="margin-left: 15px;"><%= link_to "投稿をしてみよう!", new_user_post_path, class: 'ui button orange' %></div>
   <% end %>
 </div>
