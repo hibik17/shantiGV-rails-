@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   namespace :user do
     get 'homes/mypage'
     resources :posts do
-      resource :favorite, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
     end
     resources :users, except: [:create, :new] do
       get 'withdraw'

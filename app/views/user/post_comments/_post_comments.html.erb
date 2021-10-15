@@ -1,0 +1,14 @@
+<p>コメント件数：<%= post.post_comments.count %></p>
+<% post.post_comments.each do |post_comment| %>
+  <p><%= attachment_image_tag post_comment.user, :profile_image, fallback: 'noimage' %></p>
+  <%= post_comment.user.name %>
+  <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+  <%= link_to "comment delete", user_post_post_comment_path(post_comment.post_id,post_comment.id), method: :delete, class: 'ui button basic violet' %>
+<% end %>
+</div>
+<div>
+<%= form_with(model:[post, PostComment.new],url: user_post_post_comments_path(post.id), local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>
+</div>
