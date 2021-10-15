@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      post: 投稿
+    attributes:
+      post:
+        title: タイトル
+        content: 投稿内容
+        image: 投稿画像
+        country: 国名
+        genre: 投稿のジャンル
+        post_user: 投稿者名の選択(投稿作成者の場所に表示する名前を選択してください)

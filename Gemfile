@@ -67,3 +67,20 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
+
+# cssimport
+gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
+gem 'jquery-rails'
+
+# validtion message translate to japanese
+gem 'rails-i18n'
+
+# image file administration
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+
+#debug tool
+gem 'pry-rails'
+
+#page nation
+gem 'kaminari'
