@@ -81,3 +81,6 @@ gem "refile-mini_magick"
 
 #debug tool
 gem 'pry-rails'
+
+#page nation
+gem 'kaminari'
