@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   belongs_to :genre
   belongs_to :country
   has_many :favorites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
 
   #validatations
   validates :title, presence: true
