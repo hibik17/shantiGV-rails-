@@ -1,2 +1,32 @@
-<h1>User::Users#index</h1>
-<p>Find me in app/views/user/users/index.html.erb</p>
+<div class="ui container" style='margin-top: 30px; margin-bottom: 50px;'>
+  <div class="ui three cards">
+    <% @users.each do |user| %>
+      <div class="ui special cards" style="margin-left: 50px;">
+        <div class="card">
+          <div class="blurring dimmable image">
+            <div class="ui dimmer">
+              <div class="content">
+                <div class="center">
+                  <div class="ui inverted button">Add Friend</div>
+                </div>
+              </div>
+            </div>
+            <%= attachment_image_tag user, :profile_image, fallback: 'noimage.png', class: 'image' %>
+          </div>
+          <div class="content">
+            <a class="header"><%= user.name %></a>
+            <div class="meta">
+              <span class="date"><%= user.profile %></span>
+            </div>
+          </div>
+          <div class="extra content">
+            <span>
+              <i class="images outline icon"></i>
+              <%= user.posts.count %> posts
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

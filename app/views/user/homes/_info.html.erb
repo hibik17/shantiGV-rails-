@@ -23,6 +23,31 @@
       <div class="twelve wide column"><%= current_user.created_at.strftime('%Y/%m/%d') %></div>
     </div>
   </li>
+  <%# 投稿数 %>
+  <li class="ui list">
+    <div class="ui grid">
+      <div class="four wide column"><i class="images outline icon"></i>Posts amount</div>
+      <div class="twelve wide column"><%= current_user.posts.count %> posts</div>
+    </div>
+  </li>
+  <li class="ui list">
+    <div class="ui grid">
+      <div class="four wide column"><i class="user icon"></i>Follews</div>
+      <div class="twelve wide column"></div>
+    </div>
+  </li>
+  <li class="ui list">
+    <div class="ui grid">
+      <div class="four wide column"><i class="users icon"></i></i>Follwers</div>
+      <div class="twelve wide column"></div>
+    </div>
+  </li>
+  <li class="ui list">
+    <div class="ui grid">
+      <div class="four wide column"><i class="heart icon"></i>favorites</div>
+      <div class="twelve wide column"></div>
+    </div>
+  </li>
   <h4 class="ui horizontal inverted divider" style="margin-top: 40px; color: black;">Menu</h4>
   <div class="ui two grid">
     <div class="eight wide column" style="padding-left: 300px;">
