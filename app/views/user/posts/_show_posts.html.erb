@@ -1,0 +1,62 @@
+<div class="ui three cards">
+  <%# 投稿の中身がある時の処理 %>
+  <% if posts.count >= 1 %>
+    <% posts.each do |post| %>
+      <div class="ui card">
+        <div class="content">
+          <div class="right floated meta"><%= post.created_at.strftime('%Y/%m/%d') %></div>
+          <%= attachment_image_tag post.user, :profile_image, fallback: 'noimage', class: 'ui avatar' %>
+          <%= post.post_user %>
+        </div>
+        <div class="image">
+          <%= attachment_image_tag post, :image, fallback: 'nopost_image' %>
+        </div>
+        <div class="content">
+          <span class="right floated">
+            <%= render 'user/favorites/favorites', post: post %>
+          </span>
+          <i class="comment icon"></i>
+          <%= post.post_comments.count%>
+        </div>
+        <div class="extra content">
+          <div class="ui large transparent left icon">
+            <%= link_to  user_post_path(post.id) do %>
+              <p>Add Comment...</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%# paginationを起動するかどうか %>
+    <% if @paginate_active == true %>
+      <div style="margin-top: 50px; text-align:center;">
+        <%= paginate posts %>
+      </div>
+    <% end %>
+  <%# 投稿がない時の処理 %>
+  <% else %>
+    <%# 全ての投稿のページに一件も投稿がない時の処理 %>
+    <% if @paginate_active == true %>
+      <div class="ui center aligned placeholder segment" style="margin: 150px 300px 200px 300px;">
+        <div class="ui icon header">
+          <i class="book icon"></i>
+          <h3>投稿がまだ一件もありません。初めての投稿をしてみましょう!</h3>
+        </div>
+        <div class="inline">
+          <%= link_to "投稿をする", new_user_post_path, class: 'ui button orange' %>
+        </div>
+      </div>
+    <%# userがいいねを一つも記事に押していなかった時 %>
+    <% else %>
+      <div class="ui center aligned placeholder segment" style="margin: 150px 300px 200px 300px;">
+        <div class="ui icon header">
+          <i class="search icon"></i>
+          <h3>いいねを押した記事がありません。記事にいいねをしましょう!!</h3>
+        </div>
+        <div class="inline">
+          <%= link_to "投稿を見る", user_posts_path, class: 'ui button orange' %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
