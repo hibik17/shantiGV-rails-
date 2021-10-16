@@ -10,7 +10,9 @@
       <%= attachment_image_tag user, :profile_image, fallback: 'noimage', class: 'ui image medium' %>
     </div>
     <div class="content">
-      <a class="header"><%= user.name %></a>
+      <%= link_to user_user_path(user.id) do %>
+        <%= user.name %>
+      <% end %>
       <div class="meta">
         <span class="date">
           Joined in <%= user.created_at.strftime('%Y/%m/%d') %>

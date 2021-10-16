@@ -1,6 +1,6 @@
 <div class="ui four cards">
-  <% if @posts.count >= 1 %>
-    <% @posts.each do |post| %>
+  <% if posts.count >= 1 %>
+    <% posts.each do |post| %>
       <div class="ui card">
         <div class="content">
           <div class="right floated meta"><%= post.created_at.strftime('%Y/%m/%d') %></div>
