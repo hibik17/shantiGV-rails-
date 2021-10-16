@@ -65,4 +65,7 @@
   <div>
     <%= render 'user/homes/user_posts', posts: @user.posts %>
   </div>
+  <div class="field">
+    <%= render 'user/relationships/follow', user: @user%>
+  </div>
 </div>
