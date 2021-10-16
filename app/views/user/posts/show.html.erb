@@ -1,16 +1,18 @@
 <%#= render 'user/post_comments/post_comments', post: @post%>
 
-<div class="ui center aligned internally grid">
+<div class="ui center aligned internally grid" style='margin-top: 20px;'>
   <div class="row">
     <div class="eight wide column">
       <h3 class="ui dividing header">Post</h3>
       <div class="ui card" style="margin: 0 auto;">
+        <div class="img">
+          <%= attachment_image_tag @post, :image, fallback: 'nopost_image', class: 'ui medium image' %>
+        </div>
         <div class="content">
           <div class="header"><%= @post.title %></div>
           <div class="meta">
             <span class="right floated time">created at <%= @post.created_at.strftime('%Y/%m/%d') %></span>
             <span class="category"><%= @post.country.name %></span>
-            <span class="category"><%= @post.genre.name %></span>
           </div>
           <div class="description">
             <p><%= @post.content %></p>
@@ -19,6 +21,12 @@
         <div class="extra content">
           <div class="right floated author">
             <%= attachment_image_tag @post.user, :profile_image, fallback: 'noimage', class: 'ui avatar image' %><%= @post.user.name %>
+          </div>
+          <div class="left floated heart_num">
+            <%= render 'user/favorites/favorites', post: @post %>
+          </div>
+          <div class="center floated comment_num">
+            <i class="icon comment"></i><%= @post.post_comments.count %>
           </div>
         </div>
       </div>
