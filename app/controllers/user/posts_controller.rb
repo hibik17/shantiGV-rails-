@@ -66,6 +66,12 @@ class User::PostsController < ApplicationController
     end
   end
 
+  def research
+    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page])
+    @paginate_active = true
+    render :index
+  end
+
   private
   def post_parameter
     params.require(:post).permit(:title, :content, :genre_id, :country_id, :image, :post_user)
