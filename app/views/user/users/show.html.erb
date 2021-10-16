@@ -1,2 +1,68 @@
-<h1>User::Users#show</h1>
-<p>Find me in app/views/user/users/show.html.erb</p>
+<div class="ui container">
+  <div class="ui two column grid">
+    <div class="column">
+      <%= attachment_image_tag current_user, :profile_image, fallback: 'noimage.png', class: 'ui medium centered circular image' %>
+    </div>
+    <div class="column" style="margin-top: 10px;">
+      <div class="ui statistics">
+        <div class="statistic">
+          <div class="value">
+            <%= @user.favorites.count %>
+          </div>
+          <div class="label">
+            Favorites
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            <%= @user.posts.count %>
+          </div>
+          <div class="label">
+            Posts
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            22
+          </div>
+          <div class="label">
+            Followers
+          </div>
+        </div>
+      </div>
+      <div class="ui divided list" style="margin-top: 30px;">
+        <div class="item">
+          <i class="map marker icon"></i>
+          <div class="content">
+            <a class="header">Registration date</a>
+            <div class="description"><%= @user.created_at.strftime('%Y/%m/%d') %></div>
+          </div>
+        </div>
+        <div class="item">
+          <i class="map marker icon"></i>
+          <div class="content">
+            <a class="header">User Name</a>
+            <div class="description"><%= @user.name %></div>
+          </div>
+        </div>
+        <div class="item">
+          <i class="map marker icon"></i>
+          <div class="content">
+            <a class="header">Follews</a>
+            <div class="description">22</div>
+          </div>
+        </div>
+        <div class="item">
+          <i class="map marker icon"></i>
+          <div class="content">
+            <a class="header">Follews</a>
+            <div class="description">22</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <%= render 'user/homes/user_posts', posts: @user.posts %>
+  </div>
+</div>
