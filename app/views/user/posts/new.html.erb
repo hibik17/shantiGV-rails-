@@ -12,7 +12,7 @@
             <% if @nick_name_active == false %>
               <li>
                 ニックネームが登録されておりません。もしニックネームを使用する場合は登録しましょう
-                <%= link_to "登録する", edit_user_user_path, class: 'ui button red' %>
+                <%= link_to "登録する", edit_user_user_path(current_user.id), class: 'ui button red' %>
               </li>
             <% end %>
           </ul>

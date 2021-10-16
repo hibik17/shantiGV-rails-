@@ -1,0 +1,27 @@
+  <div class="card" style="margin: 10px auto;">
+    <div class="blurring dimmable image">
+      <div class="ui dimmer">
+        <div class="content">
+          <div class="center">
+            <div class="ui inverted button">Add Friend</div>
+          </div>
+        </div>
+      </div>
+      <%= attachment_image_tag user, :profile_image, fallback: 'noimage', class: 'ui image medium' %>
+    </div>
+    <div class="content">
+      <a class="header"><%= user.name %></a>
+      <div class="meta">
+        <span class="date">
+          Joined in <%= user.created_at.strftime('%Y/%m/%d') %>
+        </span>
+      </div>
+    </div>
+    <div class="extra content">
+      <a>
+        <%= link_to user_user_path(user.id) do %>
+          <i class="book icon"></i><%= user.posts.count %> posts
+        <% end %>
+      </a>
+    </div>
+  </div>

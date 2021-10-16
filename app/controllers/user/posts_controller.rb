@@ -9,6 +9,7 @@ class User::PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(created_at: :desc).page(params[:page])
+    @paginate_active = true
   end
 
   def show
@@ -40,7 +41,7 @@ class User::PostsController < ApplicationController
       flash[:notice] = "投稿に成功しました"
       redirect_to user_post_path(@post)
     else
-      render :index
+      render :new
     end
   end
 
