@@ -37,6 +37,7 @@
   <% else %>
     <%# 全ての投稿のページに一件も投稿がない時の処理 %>
     <% if @paginate_active == true %>
+      <%# 検索結果がない場合の処理 %>
       <div class="ui center aligned placeholder segment" style="margin: 150px 300px 200px 300px;">
         <div class="ui icon header">
           <i class="book icon"></i>
@@ -47,17 +48,28 @@
         </div>
       </div>
     <%# userがいいねを一つも記事に押していなかった時 %>
-    <% else %>
-      <div class="ui center aligned placeholder segment" style="margin: 150px 300px 200px 300px;">
-        <div class="ui icon header">
-          <i class="search icon"></i>
-          <h3>いいねを押した記事がありません。記事にいいねをしましょう!!</h3>
+    <% elsif @paginate_active == false %>
+      <% if params[:commit] == "Search" %>
+        <div class="ui center aligned placeholder segment" style="margin: 150px 300px 200px 300px;">
+          <div class="ui icon header">
+            <i class="book icon"></i>
+            <h3>お探しの記事はありません。投稿を待ちましょう</h3>
+          </div>
+          <div class="inline">
+            <%= link_to "戻る", user_posts_path, class: 'ui button orange' %>
+          </div>
         </div>
-        <div class="inline">
-          <%= link_to "投稿を見る", user_posts_path, class: 'ui button orange' %>
+      <% else %>
+        <div class="ui center aligned placeholder segment" style="margin: 150px 300px 200px 300px;">
+          <div class="ui icon header">
+            <i class="search icon"></i>
+            <h3>いいねを押した記事がありません。記事にいいねをしましょう!!</h3>
+          </div>
+          <div class="inline">
+            <%= link_to "投稿を見る", user_posts_path, class: 'ui button orange' %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>
-

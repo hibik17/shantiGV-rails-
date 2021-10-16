@@ -21,7 +21,8 @@ class Post < ApplicationRecord
   end
 
   # 記事の検索メソッド
-  def self.search(keyword)
+  def self.post_search(keyword)
     where(["title like? OR content like?", "%#{keyword}%", "%#{keyword}%"])
   end
+
 end

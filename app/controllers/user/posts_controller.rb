@@ -67,8 +67,26 @@ class User::PostsController < ApplicationController
   end
 
   def research
-    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page])
-    @paginate_active = true
+    # 検索結果を入れる変数
+    @posts = Array.new
+    # postモデルからの抽出
+    post_result = Post.post_search(params[:keyword])
+    @posts = @posts + post_result
+    # country modelからの抽出
+    country = Country.country_search(params[:keyword])
+    if country != nil
+      country_result = country.posts
+      @posts = @posts + country_result
+    end
+    # genre model からの抽出
+    genre = Genre.genre_search(params[:keyword])
+    if genre != nil
+      genre_result = genre.posts
+      @posts = @posts + genre_result
+    end
+    # 検索する際に重複してしまった投稿を消す作業
+    @posts = @posts.uniq
+    @paginate_active = false
     render :index
   end
 
