@@ -1,10 +1,30 @@
-<div class="ui centered card">
-  <div class="ui centered medium image">
-    <%= attachment_image_tag @post, :image, fallback: "noimage.png"%>
+<%#= render 'user/post_comments/post_comments', post: @post%>
+
+<div class="ui center aligned internally grid">
+  <div class="row">
+    <div class="eight wide column">
+      <h3 class="ui dividing header">Post</h3>
+      <div class="ui card" style="margin: 0 auto;">
+        <div class="content">
+          <div class="header"><%= @post.title %></div>
+          <div class="meta">
+            <span class="right floated time">created at <%= @post.created_at.strftime('%Y/%m/%d') %></span>
+            <span class="category"><%= @post.country.name %></span>
+            <span class="category"><%= @post.genre.name %></span>
+          </div>
+          <div class="description">
+            <p><%= @post.content %></p>
+          </div>
+        </div>
+        <div class="extra content">
+          <div class="right floated author">
+            <%= attachment_image_tag @post.user, :profile_image, fallback: 'noimage', class: 'ui avatar image' %><%= @post.user.name %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="eight wide column">
+      <%= render 'user/post_comments/post_comments', post: @post %>
+    </div>
   </div>
-  <div class="content">
-    <a class="header">Elyse</a>
-  </div>
-  <%= render 'user/post_comments/post_comments', post: @post%>
 </div>
-    

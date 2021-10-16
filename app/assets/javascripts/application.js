@@ -46,6 +46,8 @@ $(document).ready(function () {
   );
 });
 
-$(".favorite_image").dimmer({
-  on: "hover",
+$(document).ready(function () {
+  $("attachment user profile_image ui image medium fallback").dimmer({
+    on: "hover",
+  });
 });
