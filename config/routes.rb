@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   namespace :user do
     get 'homes/mypage'
     get 'favorites/index'
-    post 'posts/research'
+    get 'posts/research'
     resources :posts do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]

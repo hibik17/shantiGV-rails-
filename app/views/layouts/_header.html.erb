@@ -9,7 +9,7 @@
         <div class="right item">
           <% if user_signed_in? %>
             <div class="search-form">
-              <%= form_with url: user_posts_research_path, method: :post, local: true do |f| %>
+              <%= form_with url: user_posts_research_path, method: :get, local: true do |f| %>
                 <i class="search icon"></i><%= f.text_field :keyword, value: @keyword, placeholder: 'Search...' %>
                 <%= f.submit "Search", class:'ui Orange Mini search_button' %>
               <% end %>
