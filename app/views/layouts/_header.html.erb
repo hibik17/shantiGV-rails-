@@ -8,9 +8,12 @@
         <%= link_to "AllPosts", user_posts_path, class: "item header_item" %>
         <div class="right item">
           <% if user_signed_in? %>
-            <i class="search icon"></i>
-            <input type="text" placeholder="Search...">
-            <button class="ui Orange Mini search_button">Search</button>
+            <div class="search-form">
+              <%= form_with url: user_posts_research_path, method: :get, local: true do |f| %>
+                <i class="search icon"></i><%= f.text_field :keyword, value: @keyword, placeholder: 'Search...' %>
+                <%= f.submit "Search", class:'ui Orange Mini search_button' %>
+              <% end %>
+            </div>
           <% else %>
             <%= link_to "Log in", new_user_session_path, class:"ui inverted button", style: "margin-right: 20px;" %>
             <%= link_to "Sign up", new_user_registration_path, class:"ui inverted button"%>

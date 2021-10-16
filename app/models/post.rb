@@ -19,4 +19,10 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+
+  # 記事の検索メソッド
+  def self.post_search(keyword)
+    where(["title like? OR content like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
 end
