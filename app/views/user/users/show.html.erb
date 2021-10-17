@@ -1,7 +1,18 @@
-<div class="ui container">
+<div class="ui container" style="margin-top: 50px;">
   <div class="ui two column grid">
-    <div class="column">
-      <%= attachment_image_tag current_user, :profile_image, fallback: 'noimage.png', class: 'ui medium centered circular image' %>
+    <div class="ui column special">
+      <div class="card">
+        <div class="blurring dimmable image">
+          <div class="ui dimmer">
+            <div class="content">
+              <div class="center">
+                <%= render 'user/relationships/follow', user: @user %>
+              </div>
+            </div>
+          </div>
+          <%= attachment_image_tag @user, :profile_image, fallback: 'noimage', class: 'ui medium centered circular image' %>
+        </div>
+      </div>
     </div>
     <div class="column" style="margin-top: 10px;">
       <div class="ui statistics">
@@ -64,8 +75,5 @@
   </div>
   <div class="ui text container">
     <%= render 'user/homes/user_posts', posts: @user.posts %>
-  </div>
-  <div class="field">
-    <%= render 'user/relationships/follow', user: @user%>
   </div>
 </div>
