@@ -29,8 +29,8 @@ class User < ApplicationRecord
   acts_as_paranoid
 
   # follow method
-  def follow(user_id)
-    relationships.create(followed_id: user_id)
+  def follow(follow_id, followed_id)
+    relationships.create(follower_id: follow_id, followed_id: followed_id)
   end
   def unfollow(user_id)
     relationships.find_by(followed_id: user_id).destroy
