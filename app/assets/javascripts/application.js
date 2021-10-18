@@ -46,12 +46,6 @@ $(document).ready(function () {
   );
 });
 
-// $(document).ready(function () {
-//   $(".column.special .image").dimmer({
-//     on: "hover",
-//   });
-// });
-
 $(document).on("turbolinks:load", function () {
   $(".column.special .image").dimmer({
     on: "hover",
