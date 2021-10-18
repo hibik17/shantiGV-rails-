@@ -51,3 +51,9 @@ $(document).on("turbolinks:load", function () {
     on: "hover",
   });
 });
+
+$(document).on("turbolinks:load", function () {
+  $(".usershow .image").dimmer({
+    on: "hover",
+  });
+});

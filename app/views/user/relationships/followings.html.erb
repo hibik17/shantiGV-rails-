@@ -1,22 +1,17 @@
-<h2>Follower Users</h2>または<h2>Follow Users</h2>
-<% if @users.exists? %>
-  <thead>
-    <tr>
-      <th>name</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td>フォロー数: <%= user.followings.count %></td>
-        <td>フォロワー数: <%= user.followers.count %></td>
-      </tr>
+<div class="ui text container">
+  <div class="ui centered alinged">
+    <% if @users.count >= 1 %>
+      <% @users.each do |user| %>
+        <%= render 'user/users/user_card', user: user %>
+      <% end %>
+    <% else %>
+    <div style="padding-top: 280px;">
+      <div class="ui warning message">
+        <div class="header" style="text-align:center;" >
+          <h1>フォローをしているユーザーはいません</h1>
+        </div>
+        <%= link_to 'ユーザーを探す', user_users_path, class: 'ui button violet', style: 'margin-left: 270px; margin-top: 20px;' %>
+      </div>
     <% end %>
-  </tbody>
-</table>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+  </div>
+</div>

@@ -41,10 +41,18 @@
         </div>
         <div class="statistic">
           <div class="value">
-            22
+            <%= @user.followers.count %>
           </div>
           <div class="label">
             Followers
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            <%= @user.followings.count %>
+          </div>
+          <div class="label">
+            Followings
           </div>
         </div>
       </div>

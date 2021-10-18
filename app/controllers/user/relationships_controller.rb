@@ -1,10 +1,9 @@
 class User::RelationshipsController < ApplicationController
   def create
-    binding.pry
     if params[:follwer_id] == params[:followed_id]
       flash[:notice] = '自分をフォローすることはできません'
       @user = User.find(params[:follwer_id])
-      render template: 'user/users/show'
+      redirect_to user_user_path(@user.id)
     else
       follow = current_user.follow(params[:follow_id], params[:followed_id])
       redirect_to request.referer
@@ -17,12 +16,10 @@ class User::RelationshipsController < ApplicationController
   end
 #————————フォロー・フォロワー一覧を表示する-————————————
   def followings
-    user = User.find(params[:user_id])
-    @users = user.followings
+    @users = current_user.followings
   end
 
   def followers
-    user = User.find(params[:user_id])
-    @users = user.followers
+    @users = current_user.followers
   end
 end
