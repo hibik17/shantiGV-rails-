@@ -5,12 +5,14 @@ class User::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @genres = Genre.all
     @genre_array = ['ジャンル選択']
-    Genre.all.each do |genre|
+    @genres.each do |genre|
       @genre_array << genre.name
     end
+    @countries = Country.all
     @country_array = ['国の選択']
-    Country.all.each do |country|
+    @countries.each do |country|
       @country_array << country.name
     end
   end
