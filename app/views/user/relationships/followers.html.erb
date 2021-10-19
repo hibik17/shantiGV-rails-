@@ -1,0 +1,17 @@
+<div class="ui text container">
+  <div class="ui centered alinged">
+    <% if @users.count >= 1 %>
+      <% @users.each do |user| %>
+        <%= render 'user/users/user_card', user: user %>
+      <% end %>
+    <% else %>
+    <div style="padding-top: 280px;">
+      <div class="ui warning message">
+        <div class="header" style="text-align:center;" >
+          <h1>フォローをされているユーザーはいません</h1>
+        </div>
+        <%= link_to '戻る', user_homes_mypage_path, class: 'ui button violet', style: 'margin-left: 270px; margin-top: 20px;' %>
+      </div>
+    <% end %>
+  </div>
+</div>

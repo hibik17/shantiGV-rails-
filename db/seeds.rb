@@ -29,20 +29,18 @@
 #   )
 # end
 
-countries = {'インドネシア' => 1, 'マレーシア' => 2, 'カンボジア' => 3}
+countries = ['インドネシア', 'カンボジア', 'フィリピン']
 
-countries.each do |key, value|
+countries.each do |country|
   Country.create!(
-    id: value,
-    name: key
+    name: country
   )
 end
 
-genres = {'お金に関して' => 1, '観光に関して' => 2, '実際のボランティアに関して' => 3}
+genres = ['お金に関して', '現地の人に関して']
 
-genres.each do |key, value|
+genres.each do |genre|
   Genre.create!(
-    id: value,
-    name: key
+    name: genre
   )
 end

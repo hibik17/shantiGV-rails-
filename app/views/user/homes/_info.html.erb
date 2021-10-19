@@ -27,19 +27,31 @@
   <li class="ui list">
     <div class="ui grid">
       <div class="four wide column"><i class="images outline icon"></i>Posts amount</div>
-      <div class="twelve wide column"><%= current_user.posts.count %> posts</div>
+      <div class="twelve wide column">
+        <%= link_to "#user_posts" do %>
+          <%= current_user.posts.count %> posts
+        <% end %>
+      </div>
     </div>
   </li>
   <li class="ui list">
     <div class="ui grid">
       <div class="four wide column"><i class="user icon"></i>Follews</div>
-      <div class="twelve wide column"></div>
+      <div class="twelve wide column">
+        <%= link_to user_followings_path do %>
+          <%= current_user.followings.count %> follows
+        <% end %>
+      </div>
     </div>
   </li>
   <li class="ui list">
     <div class="ui grid">
       <div class="four wide column"><i class="users icon"></i></i>Follwers</div>
-      <div class="twelve wide column"></div>
+      <div class="twelve wide column">
+        <%= link_to user_followers_path do %>
+          <%= current_user.followers.count %> followers
+        <% end %>
+      </div>
     </div>
   </li>
   <li class="ui list">
@@ -55,13 +67,13 @@
   <h4 class="ui horizontal inverted divider" style="margin-top: 40px; color: black;">Menu</h4>
   <div class="ui three grid">
     <div class="six wide column">
-      <%= link_to "Log out", destroy_user_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}, class: "ui button basic violet" %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}, class: "ui button basic violet" %>
     </div>
     <div class="five wide column" style="padding-right: 80px;">
-      <%= link_to "Withdraw", user_user_withdraw_path(current_user.id), class: 'ui button basic violet' %>
+      <%= link_to "退会", user_user_withdraw_path(current_user.id), class: 'ui button basic violet' %>
     </div>
     <div class="five wide column">
-      <%= link_to "Edit", edit_user_user_path(current_user.id), class: 'ui button basic violet' %>
+      <%= link_to "編集", edit_user_user_path(current_user.id), class: 'ui button basic violet' %>
     </div>
   </div>
 </ul>

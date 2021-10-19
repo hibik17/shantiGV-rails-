@@ -2,9 +2,19 @@ class User::PostsController < ApplicationController
 
   before_action :correct_user, only: [:edit, :update, :delete]
   before_action :authenticate_user!
-  
+
   def new
     @post = Post.new
+    @genres = Genre.all
+    @genre_array = ['ジャンル選択']
+    @genres.each do |genre|
+      @genre_array << genre.name
+    end
+    @countries = Country.all
+    @country_array = ['国の選択']
+    @countries.each do |country|
+      @country_array << country.name
+    end
   end
 
   def index

@@ -1,13 +1,17 @@
   <div class="card" style="margin: 10px auto;">
-    <div class="blurring dimmable image">
-      <div class="ui dimmer">
-        <div class="content">
-          <div class="center">
-            <div class="ui inverted button">Add Friend</div>
+    <div class="ui usershow">
+      <div class="card">
+        <div class="blurring dimmable image">
+          <div class="ui dimmer">
+            <div class="content">
+              <div class="center">
+                <%= link_to 'Show', user_user_path(user.id), class: 'ui button violet' %>
+              </div>
+            </div>
           </div>
+          <%= attachment_image_tag user, :profile_image, fallback: 'noimage', class: 'ui medium image' %>
         </div>
       </div>
-      <%= attachment_image_tag user, :profile_image, fallback: 'noimage', class: 'ui image medium' %>
     </div>
     <div class="content">
       <%= link_to user_user_path(user.id) do %>

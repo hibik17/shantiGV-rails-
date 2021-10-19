@@ -1,7 +1,25 @@
-<div class="ui container">
+<div class="ui container" style="margin-top: 50px;">
+  <% if flash[:notice] %>
+    <div class="ui warning message">
+      <div class="header">
+        <%= flash[:notice] %>
+      </div>
+    </div>
+  <% end %>
   <div class="ui two column grid">
-    <div class="column">
-      <%= attachment_image_tag current_user, :profile_image, fallback: 'noimage.png', class: 'ui medium centered circular image' %>
+    <div class="ui column special">
+      <div class="card">
+        <div class="blurring dimmable image">
+          <div class="ui dimmer">
+            <div class="content">
+              <div class="center">
+                <%= render 'user/relationships/follow', user: @user %>
+              </div>
+            </div>
+          </div>
+          <%= attachment_image_tag @user, :profile_image, fallback: 'noimage', class: 'ui medium centered circular image' %>
+        </div>
+      </div>
     </div>
     <div class="column" style="margin-top: 10px;">
       <div class="ui statistics">
@@ -23,10 +41,18 @@
         </div>
         <div class="statistic">
           <div class="value">
-            22
+            <%= @user.followers.count %>
           </div>
           <div class="label">
             Followers
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            <%= @user.followings.count %>
+          </div>
+          <div class="label">
+            Followings
           </div>
         </div>
       </div>
@@ -62,7 +88,7 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="ui text container">
     <%= render 'user/homes/user_posts', posts: @user.posts %>
   </div>
 </div>

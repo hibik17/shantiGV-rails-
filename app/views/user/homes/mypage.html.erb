@@ -3,8 +3,31 @@
     <%= render 'info' %>
   </div>
   <div class="ui horizon divider"></div>
-  <div style="margin-top: 30px">
+  <div style="margin-top: 30px" id="user_posts">
     <%= render 'user_posts', posts: @posts %>
   </div>
 </div>
+
+<div class="ui basic modal">
+  <div class="ui icon header">
+    <i class="archive icon"></i>
+    Archive Old Messages
+  </div>
+  <div class="content">
+    <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+  </div>
+  <div class="actions">
+    <div class="ui red basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <div class="ui green ok inverted button">
+      <i class="checkmark icon"></i>
+      Yes
+    </div>
+  </div>
+</div>
+
+<button id='modalbutton' class='ui button violet'>modalの表示</button>
+
 

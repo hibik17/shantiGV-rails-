@@ -46,8 +46,18 @@ $(document).ready(function () {
   );
 });
 
-$(document).ready(function () {
-  $("attachment user profile_image ui image medium fallback").dimmer({
+$(document).on("turbolinks:load", function () {
+  $(".column.special .image").dimmer({
     on: "hover",
   });
+});
+
+$(document).on("turbolinks:load", function () {
+  $(".usershow .image").dimmer({
+    on: "hover",
+  });
+});
+
+$("#modalbuttom").on("click", "turbolinks:load", function () {
+  $(".ui.modal").modal("show");
 });
