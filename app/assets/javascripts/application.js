@@ -57,3 +57,7 @@ $(document).on("turbolinks:load", function () {
     on: "hover",
   });
 });
+
+$("#modalbuttom").on("click", "turbolinks:load", function () {
+  $(".ui.modal").modal("show");
+});
