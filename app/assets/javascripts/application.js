@@ -61,3 +61,9 @@ $(document).on("turbolinks:load", function () {
 $("#modalbuttom").on("click", "turbolinks:load", function () {
   $(".ui.modal").modal("show");
 });
+
+$(document).on("turbolinks:load", function () {
+  $(".posts_dimmer").dimmer({
+    on: "hover",
+  });
+});

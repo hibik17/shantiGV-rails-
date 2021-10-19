@@ -8,7 +8,24 @@
           <%= attachment_image_tag post.user, :profile_image, fallback: 'noimage', class: 'ui avatar' %>
           <%= post.post_user %>
         </div>
-        <div class="image">
+        <div class="image posts_dimmer">
+          <div class="ui dimmer">
+            <div class="center">
+              <% if post.favorited_by?(current_user) %>
+                <p>
+                  <%= link_to user_post_favorites_path(post.id), method: :delete do %>
+                    <%= image_tag 'heart.png', class: 'ui image medium'  %>
+                  <% end %>
+                </p>
+                <% else %>
+                <p>
+                  <%= link_to user_post_favorites_path(post.id), method: :post do %>
+                    <%= image_tag 'deleteheart.png', class: 'ui image medium' %>
+                  <% end %>
+                </p>
+              <% end %>
+            </div>
+          </div>
           <%= attachment_image_tag post, :image, fallback: 'nopost_image' %>
         </div>
         <div class="content">
