@@ -1,2 +1,39 @@
-<h1>Admin::Genres#index</h1>
-<p>Find me in app/views/admin/genres/index.html.erb</p>
+<div class="ui center alinged container" style="padding-top: 100px;">
+  <div style="text-align: center; margin-bottom: 50px;">
+    <% if flash[:message] %>
+      <div class="ui warning message">
+        <div class="header">
+          <%= flash[:message] %>
+        </div>
+      </div>
+    <% end %>
+    <div class="ui search">
+      <%= form_with url: admin_genres_genre_search_path, local: true do |f| %>
+        <div class="ui icon input">
+          <%= f.text_field :genre_name, placeholder: '名前を入力... ' %>
+          <%= button_tag do %>
+            <i class="search icon"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <table class="ui blue table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Posts</th>
+        <th>status change</th>
+      </tr>
+    </thead>
+    <% @genres.each do |genre| %>
+      <tbody>
+        <tr>
+          <td><%= genre.name %></td>
+          <td><%= genre.posts.count %> Posts</td>
+          <td><%= link_to "削除", admin_genre_path(genre.id), mathod: :delete, data: {confirm: "#{genre.name} を削除しますか？"}, method: :delete, class: 'ui button red' %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>

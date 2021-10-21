@@ -4,6 +4,6 @@ class Genre < ApplicationRecord
   # validation
   # validates :name, presence: true
   def self.genre_search(keyword)
-    find_by(["name like?", "%#{keyword}%"])
+    where(["name like?", "%#{keyword}%"])
   end
 end
