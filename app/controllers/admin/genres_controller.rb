@@ -7,10 +7,18 @@ class Admin::GenresController < ApplicationController
 
   def index
     @genres = Genre.all
+    @genre = Genre.new
   end
 
   def create
-    redirect_to admin_genres_path
+    @genre = Genre.new(genre_parameter)
+    if @genre.save
+      flash[:message] = '新規ジャンル作成しました'
+      redirect_to admin_genres_path
+    else
+      @genres = Genre.all
+      render :index
+    end
   end
 
   def update
@@ -27,7 +35,6 @@ class Admin::GenresController < ApplicationController
     if params[:genre_name] != ""
       @genres = Genre.genre_search(params[:genre_name])
       if @genres.count >= 1
-        binding.pry
         render :index
       else
         flash[:message] = '一致するものはありませんでした'
