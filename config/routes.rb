@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'users/index'
+  end
   root :to => 'user/homes#top'
 
-  devise_for :admins
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions'
+  }
   devise_for :users, controllers: {
     # deviseの階層を編集した場合は適宜pathを編集してください
     omniauth_callbacks: "users/omniauth_callbacks"
@@ -10,6 +15,12 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :countries, only: [:new, :index, :edit]
     resources :genres, only: [:new, :edit, :index]
+    get 'users/user_search'
+    post 'users/user_search'
+    resources :users, only: [:index] do
+      post 'restore'
+    end
+    get 'top' => 'homes#top', as: 'top'
   end
 
   namespace :user do

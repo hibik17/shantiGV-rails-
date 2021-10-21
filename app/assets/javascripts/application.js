@@ -19,33 +19,6 @@
 //= require semantic-ui
 //= require_tree .
 
-$(document).ready(function () {
-  $(".search_button").hover(
-    function () {
-      $(this).transition("jiggle");
-    },
-    function () {}
-  );
-});
-
-$(document).ready(function () {
-  $(".start_button").hover(
-    function () {
-      $(this).transition("jiggle");
-    },
-    function () {}
-  );
-});
-
-$(document).ready(function () {
-  $(".header_item").hover(
-    function () {
-      $(this).transition("jiggle");
-    },
-    function () {}
-  );
-});
-
 $(document).on("turbolinks:load", function () {
   $(".column.special .image").dimmer({
     on: "hover",
@@ -58,7 +31,7 @@ $(document).on("turbolinks:load", function () {
   });
 });
 
-$("#modalbuttom").on("click", "turbolinks:load", function () {
+$("#modalbutton").click("turbolinks:load", function () {
   $(".ui.modal").modal("show");
 });
 
