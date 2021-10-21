@@ -3,9 +3,18 @@ class Admin::UsersController < ApplicationController
     @users = User.with_deleted
   end
 
+  def withdraw
+    user = User.find(params[:user_id])
+    user.destroy
+    @users = User.with_deleted
+    render :index
+  end
+
   def restore
-    user = User.find(:user_id)
+    user = User.with_deleted.find(params[:user_id])
     user.restore
+    @users = User.with_deleted
+    render :index
   end
 
   def user_search

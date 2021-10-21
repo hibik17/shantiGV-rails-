@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     post 'users/user_search'
     resources :users, only: [:index] do
       post 'restore'
+      delete 'withdraw'
     end
     get 'top' => 'homes#top', as: 'top'
   end
