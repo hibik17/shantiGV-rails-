@@ -34,7 +34,7 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Posts</th>
+        <th>Created at</th>
         <th>status change</th>
       </tr>
     </thead>
@@ -42,7 +42,7 @@
       <tbody>
         <tr>
           <td><%= genre.name %></td>
-          <td><%= genre.posts.count %> Posts</td>
+          <td><%= genre.created_at.strftime('%Y/%m/%d') %></td>
           <td><%= link_to "削除", admin_genre_path(genre.id), mathod: :delete, data: {confirm: "#{genre.name} を削除しますか？"}, method: :delete, class: 'ui button red' %></td>
         </tr>
       </tbody>
