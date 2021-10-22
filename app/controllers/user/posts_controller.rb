@@ -6,15 +6,6 @@ class User::PostsController < ApplicationController
   def new
     @post = Post.new
     @genres = Genre.all
-    @genre_array = ['ジャンル選択']
-    @genres.each do |genre|
-      @genre_array << genre.name
-    end
-    @countries = Country.all
-    @country_array = ['国の選択']
-    @countries.each do |country|
-      @country_array << country.name
-    end
   end
 
   def index
@@ -33,7 +24,6 @@ class User::PostsController < ApplicationController
   def create
     @post = Post.new(post_parameter)
     @post.user_id = current_user.id
-
     # insert post_user
     if params[:post][:post_name] == 'real_name'
       @post.post_user = current_user.name
@@ -83,16 +73,16 @@ class User::PostsController < ApplicationController
     post_result = Post.post_search(params[:keyword])
     @posts = @posts + post_result
     # country modelからの抽出
-    country = Country.country_search(params[:keyword])
-    if country != nil
-      country_result = country.posts
-      @posts = @posts + country_result
+    country_id = Country.country_search(params[:keyword])
+    if country_id != []
+      country = Post.all.where(country_id: country_id)
+      @posts = @posts + country
     end
     # genre model からの抽出
     genre = Genre.genre_search(params[:keyword])
-    if genre != nil
-      genre_result = genre.posts
-      @posts = @posts + genre_result
+    if genre != []
+      genre = Post.where(genre_id: genre)
+      @posts = @posts + genre
     end
     # 検索する際に重複してしまった投稿を消す作業
     @posts = @posts.uniq

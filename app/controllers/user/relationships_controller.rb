@@ -1,4 +1,5 @@
 class User::RelationshipsController < ApplicationController
+  before_action :authenticate_user!
   def create
     if params[:follwer_id] == params[:followed_id]
       flash[:follow_arert] = '自分をフォローすることはできません'

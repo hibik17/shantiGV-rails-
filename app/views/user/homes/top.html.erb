@@ -1,4 +1,4 @@
-<div class="ui inverted vertical center aligned segment">
+<div class="ui inverted vertical center aligned segment" style='height: 92vh;'>
 
   <div class="ui text container" style='height: 200px;'>
     <h1 class="ui inverted" style='margin-top: 50px;'>Welcome to shantiGVApp</h1>
@@ -15,17 +15,16 @@
           <p>このアプリの利用方法はとても簡単です。アプリの会員登録を行い、newpostのメニューから新規投稿を行うことができ、usersの場所でこのアプリのユーザーを一覧で見ることができます。そして、allpostsのところでは全ての投稿を閲覧することができます。他のユーザーをフォローしたり、投稿に対していいねをすることで後で自分で見たい投稿を探しやすくすることも可能です。それでは早速したの始めるのボタンをクリックして始めてみましょう!</p>
         </div>
         <div class="six wide right floated column">
-          <%= image_tag 'shanti', class: 'ui large circular image' %>
+          <div class='ui large image'>
+            <%= image_tag 'shanti' %>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="center aligned column">
-          <%= link_to '始める', new_user_session_path, class: 'ui huge primary button', style: 'margin-top: 15px;' %>
+          <%= link_to '始める', new_user_registration_path, class: 'ui huge primary button', style: 'margin-top: 30px;' %>
         </div>
       </div>
     </div>
   </div>
-  <%= link_to new_admin_session_path, class: "ui basic button", style: 'margin-left: 90%;' do %>
-    <i class="icon user"></i>
-  <% end %>
 </div>
