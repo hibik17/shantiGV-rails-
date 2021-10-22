@@ -20,7 +20,7 @@
       </div>
     <% end %>
     <div class="ui search">
-      <%= form_with url: "#", local: true do |f| %>
+      <%= form_with url: admin_countries_country_search_path, local: true do |f| %>
         <div class="ui icon input">
           <%= f.text_field :country_name, placeholder: '国名を入力... ' %>
           <%= button_tag do %>

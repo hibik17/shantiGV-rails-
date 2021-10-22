@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :countries, only: [:index, :create, :destroy, :edit, :update]
-    resources :genres, only: [:index, :create, :destroy, :edit, :update]
+    resources :countries, only: [:index, :create, :destroy]
+    resources :genres, only: [:index, :create, :destroy]
+    get 'countries/country_search'
+    post 'countries/country_search'
     get 'genres/genre_search'
     post 'genres/genre_search'
     get 'users/user_search'

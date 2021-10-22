@@ -1,8 +1,5 @@
 class Admin::CountriesController < ApplicationController
 
-  def edit
-  end
-
   def index
     @countries = Country.all
     @country = Country.new
@@ -19,9 +16,6 @@ class Admin::CountriesController < ApplicationController
     end
   end
 
-  def update
-  end
-
   def destroy
     country = Country.find(params[:id])
     if country.destroy
@@ -30,6 +24,22 @@ class Admin::CountriesController < ApplicationController
     else
       flash[:message] = '削除に失敗しました。もう一度やり直してください'
       redirect_to admin_countries_path
+    end
+  end
+
+  def country_search
+    if params[:country_name] != nil
+      @countries = Country.country_search(params[:country_name])
+      if @countries.count >= 1
+        @country = Country.new
+        redirect_to admin_countries_path
+      else
+        flash[:message] = '検索対象はありませんでした。'
+        redirect_to admin_countries_path
+      end
+    else
+      flash[:message] = '国名を入力してください'
+      render :index
     end
   end
 

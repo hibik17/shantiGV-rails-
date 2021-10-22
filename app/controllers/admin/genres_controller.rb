@@ -35,6 +35,8 @@ class Admin::GenresController < ApplicationController
     if params[:genre_name] != ""
       @genres = Genre.genre_search(params[:genre_name])
       if @genres.count >= 1
+        binding.pry
+        @genre = Genre.new
         render :index
       else
         flash[:message] = '一致するものはありませんでした'
