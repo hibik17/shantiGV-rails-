@@ -9,7 +9,7 @@
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
 <div class="field" style="margin-top: 50px;">
-<p>新規登録の方はこちらから</p>
+<p style="font-weight: bold;">新規登録の方はこちらから</p>
   <%= link_to "Sign up", new_registration_path(resource_name), class: "ui button basic violet" %><br />
 </div>
 <% end %>
@@ -24,7 +24,7 @@
 
 <%- if devise_mapping.omniauthable? %>
 <div class="filed" style="margin-top: 50px;">
-<p>googleから新規登録のかたはこちらから</p>
+<p style="font-weight: bold;">googleのアカウントをお持ちの方はこちらから</p>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, class: "ui button basic violet"%><br />
   <% end %>
