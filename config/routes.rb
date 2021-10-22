@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root :to => 'user/homes#top'
 
   devise_for :admins, controllers: {
-    sessions:      'admins/sessions'
+    sessions: 'admins/sessions'
   }
   devise_for :users, controllers: {
     # deviseの階層を編集した場合は適宜pathを編集してください
