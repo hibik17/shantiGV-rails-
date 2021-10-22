@@ -1,17 +1,37 @@
-<div class="ui text container">
-  <h1 class="ui inverted">Welcome to shantiGVApp</h1>
-  <h2>このアプリでは、コロナによって近年中止になっているGVに関する情報を再開された時に参考になるように投稿をしておくアプリになっています。</h2>
-  <div class="ui huge primary button start_button">
-    Get Started <i class="right arrow icon"></i>
-  </div>
-  <div class="ui">
-    <p>ログインをして初めてみましょう！！</p>
+<div class="ui inverted vertical center aligned segment">
 
-<p>既にアカウントをお持ちの方はこちらから</p>
-<%= link_to "sign_in", new_user_session_path %>
-
-<p>初めてこのサイトを利用される方はこちらから</p>
-<%= link_to "新規ユーザー登録", new_user_registration_path%>
+  <div class="ui text container" style='height: 200px;'>
+    <h1 class="ui inverted" style='margin-top: 50px;'>Welcome to shantiGVApp</h1>
+    <h2>青山学大学shanti shantiの情報共有サイトになっています</h2>
   </div>
+
+  <div class="ui vertical stripe segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+        <div class="eight wide column" style='color: white;'>
+          <h3 class="ui header green text">このアプリを作った目的</h3>
+          <p class="ui white text">2019年より蔓延したコロナウイルスによってhabitatと共同で行っていたGV活動が中断されてしまいました。次回GV活動が再開される頃に少しでもGVに行くことを検討している方に向けて、実際のGV活動のイメージが湧くようにGV経験者の実際の声を残しておきたいと考えたため作成いたしました。</p>
+          <h3 class="ui header green text">アプリの始め方</h3>
+          <p>このアプリの利用方法はとても簡単です。アプリの会員登録を行い、newpostのメニューから新規投稿を行うことができ、usersの場所でこのアプリのユーザーを一覧で見ることができます。そして、allpostsのところでは全ての投稿を閲覧することができます。他のユーザーをフォローしたり、投稿に対していいねをすることで後で自分で見たい投稿を探しやすくすることも可能です。それでは早速したの始めるのボタンをクリックして始めてみましょう!</p>
+        </div>
+        <div class="six wide right floated column">
+          <%= image_tag 'noimage', class: 'ui large avatar image' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="center aligned column">
+          <%= link_to '始める', new_user_session_path, class: 'ui huge primary button', style: 'margin-top: 15px;' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= link_to new_admin_session_path, class: "ui basic button", style: 'margin-left: 90%;' do %>
+    <i class="icon user"></i>
+  <% end %>
 </div>
 
+
+<%#= link_to "sign_in", new_user_session_path %>
+
+
+<%#= link_to "新規ユーザー登録", new_user_registration_path%>

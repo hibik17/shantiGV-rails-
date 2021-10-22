@@ -1,5 +1,7 @@
-<div class="ui footer center aligned", style="position: relative; bottom: 0;">
-  <div class="ui horizontal divider">
-    <div>&copy; shanti shanti</div>
+<% if params[:controller] != "user/homes" %>
+  <div class="ui footer center aligned">
+    <div class="ui horizontal divider">
+      <div>&copy; shanti shanti</div>
+    </div>
   </div>
-</div>
+<% end %>

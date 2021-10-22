@@ -2,18 +2,29 @@
   <div class="ui inverted vertical masthead center aligned segment">
     <div class="ui container">
       <div class="ui large secondary inverted pointing menu">
-        <%= link_to "Mypage", user_homes_mypage_path, class: "item header_item" %>
-        <%= link_to "NewPost", new_user_post_path, class: "item header_item" %>
-        <%= link_to "Users", user_users_path, class: "item header_item" %>
-        <%= link_to "AllPosts", user_posts_path, class: "item header_item" %>
+        <% if admin_signed_in? %>
+          <%= link_to "Top", admin_top_path, class: "item header_item" %>
+          <%= link_to "Users", admin_users_path, class: "item header_item" %>
+          <%= link_to "Genre", admin_genres_path, class: "item header_item" %>
+          <%= link_to "Country", admin_countries_path, class: "item header_item" %>
+        <% else %>
+          <%= link_to "Mypage", user_homes_mypage_path, class: "item active header_item" %>
+          <%= link_to "NewPost", new_user_post_path, class: "item header_item" %>
+          <%= link_to "Users", user_users_path, class: "item header_item" %>
+          <%= link_to "AllPosts", user_posts_path, class: "item header_item" %>
+        <% end %>
         <div class="right item">
-          <% if user_signed_in? %>
+          <% if admin_signed_in? %>
+            <span style='padding-right: 30px;'>管理者ページ</span>
+            <%= link_to "Log out", destroy_admin_session_path, method: :delete, data: {confirm: '管理者画面からログアウトしますか？'} , class: 'ui button red' %>
+          <% elsif user_signed_in? %>
             <div class="search-form">
               <%= form_with url: user_posts_research_path, method: :get, local: true do |f| %>
                 <i class="search icon"></i><%= f.text_field :keyword, value: @keyword, placeholder: 'Search...' %>
                 <%= f.submit "Search", class:'ui Orange Mini search_button' %>
               <% end %>
             </div>
+            <%= link_to "Log out", destroy_admin_session_path, method: :delete, data: {confirm: '管理者画面からログアウトしますか？'} , class: 'ui button red', style: 'margin-left: 30px;' %>
           <% else %>
             <%= link_to "Log in", new_user_session_path, class:"ui inverted button", style: "margin-right: 20px;" %>
             <%= link_to "Sign up", new_user_registration_path, class:"ui inverted button"%>

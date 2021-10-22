@@ -1,7 +1,7 @@
 class User::RelationshipsController < ApplicationController
   def create
     if params[:follwer_id] == params[:followed_id]
-      flash[:notice] = '自分をフォローすることはできません'
+      flash[:follow_arert] = '自分をフォローすることはできません'
       @user = User.find(params[:follwer_id])
       redirect_to user_user_path(@user.id)
     else

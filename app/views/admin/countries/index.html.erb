@@ -1,2 +1,85 @@
-<h1>Admin::Countries#index</h1>
-<p>Find me in app/views/admin/countries/index.html.erb</p>
+<div class="ui center alinged container" style="padding-top: 50px;">
+  <div style="text-align: center; margin-bottom: 50px;">
+    <% if flash[:message] %>
+      <div class="ui warning message">
+        <div class="header">
+          <%= flash[:message] %>
+        </div>
+      </div>
+    <% end %>
+    <% if @country.errors.any? %>
+      <div class="ui warning message">
+        <div class="alert">
+          <h1 class="header"><%= @country.errors.count %>件のエラーが発生しています</h1>
+          <ul>
+            <% @country.errors.full_messages.each do |message| %>
+              <li style="list-style: none;"><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <div class="ui search">
+      <%= form_with url: admin_countries_country_search_path, local: true do |f| %>
+        <div class="ui icon input">
+          <%= f.text_field :country_name, placeholder: '国名を入力... ' %>
+          <%= button_tag do %>
+            <i class="search icon"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <table class="ui blue table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Created at</th>
+        <th>status change</th>
+      </tr>
+    </thead>
+    <% @countries.each do |country| %>
+      <tbody>
+        <tr>
+          <td><%= country.name %></td>
+          <td><%= country.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= link_to "削除", admin_country_path(country.id), mathod: :delete, data: {confirm: "#{country.name} を削除しますか？"}, method: :delete, class: 'ui button red' %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+  <div class="ui grid"　 style="margin-top: 50px;">
+    <div class="ui eight wide column">
+      <h3 class="ui dividing header">新規国名作成</h3>
+      <div class="ui form">
+        <%= form_with model: @country, url: admin_countries_path , method: :post, local: true do |f| %>
+          <%= f.text_field :name, placeholder: '国名..'%>
+          <%= f.submit '作成', class: 'ui button orange', style: 'margin: 10px 250px;' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="ui eight wide column">
+      <h3 class="ui dividing header">各国の投稿数</h3>
+      <table class="ui sortable celled table">
+        <thead>
+          <tr>
+            <th>Country name</th>
+            <th>Posts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @countries.each do |country| %>
+            <tr>
+              <td><%= country.name %></td>
+              <% if country.posts.count >= 1 %>
+                <td class="positive"><%= country.posts.count %> Posts</td>
+              <% else %>
+                <td class="negative"><%= country.posts.count %> Posts</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,85 @@
-<h1>Admin::Genres#index</h1>
-<p>Find me in app/views/admin/genres/index.html.erb</p>
+<div class="ui center alinged container" style="padding-top: 50px;">
+  <div style="text-align: center; margin-bottom: 50px;">
+    <% if flash[:message] %>
+      <div class="ui warning message">
+        <div class="header">
+          <%= flash[:message] %>
+        </div>
+      </div>
+    <% end %>
+    <% if @genre.errors.any? %>
+      <div class="ui warning message">
+        <div class="alert">
+          <h1 class="header"><%= @genre.errors.count %>件のエラーが発生しています</h1>
+          <ul>
+            <% @genre.errors.full_messages.each do |message| %>
+              <li style="list-style: none;"><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <div class="ui search">
+      <%= form_with url: admin_genres_genre_search_path, local: true do |f| %>
+        <div class="ui icon input">
+          <%= f.text_field :genre_name, placeholder: '名前を入力... ' %>
+          <%= button_tag do %>
+            <i class="search icon"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <table class="ui blue table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Created at</th>
+        <th>status change</th>
+      </tr>
+    </thead>
+    <% @genres.each do |genre| %>
+      <tbody>
+        <tr>
+          <td><%= genre.name %></td>
+          <td><%= genre.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= link_to "削除", admin_genre_path(genre.id), mathod: :delete, data: {confirm: "#{genre.name} を削除しますか？"}, method: :delete, class: 'ui button red' %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+  <div class="ui grid"　 style="margin-top: 50px;">
+    <div class="ui eight wide column">
+      <h3 class="ui dividing header">新規ジャンル作成</h3>
+      <div class="ui form">
+        <%= form_with model: @genre, url: admin_genres_path, method: :post, local: true do |f| %>
+          <%= f.text_field :name, placeholder: 'ジャンル名..'%>
+          <%= f.submit '作成', class: 'ui button orange', style: 'margin: 10px 250px;' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="ui eight wide column">
+      <h3 class="ui dividing header">各ジャンルの投稿数</h3>
+      <table class="ui sortable celled table">
+        <thead>
+          <tr>
+            <th>Genre name</th>
+            <th>Posts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= genre.name %></td>
+              <% if genre.posts.count >= 1 %>
+                <td class="positive"><%= genre.posts.count %> Posts</td>
+              <% else %>
+                <td class="negative"><%= genre.posts.count %> Posts</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

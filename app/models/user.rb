@@ -39,6 +39,11 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  # user名での検索メソッド
+  def self.user_search(keyword)
+    where(["name like?", "%#{keyword}%"])
+  end
+
   protected
   def self.from_omniauth(access_token)
     data = access_token.info
