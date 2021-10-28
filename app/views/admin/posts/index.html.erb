@@ -1,0 +1,41 @@
+<div class="ui center alinged container" style="padding-top: 50px;">
+  <div style="text-align: center; margin-bottom: 50px;">
+    <% if flash[:message] %>
+      <div class="ui warning message">
+        <div class="header">
+          <%= flash[:message] %>
+        </div>
+      </div>
+    <% end %>
+    <div class="ui search">
+      <%= form_with url: admin_posts_search_path, local: true do |f| %>
+        <div class="ui icon input">
+          <%= f.text_field :keyword, placeholder: '投稿を検索... ' %>
+          <%= button_tag do %>
+            <i class="search icon"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <table class="ui blue table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Created at</th>
+        <th>Post delete</th>
+      </tr>
+    </thead>
+    <% @posts.each do |post| %>
+      <tbody>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.content %></td>
+          <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= link_to "削除", admin_post_path(post.id), mathod: :delete, data: {confirm: "#{post.user.name}の投稿を削除しますか？"}, method: :delete, class: 'ui button red' %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>

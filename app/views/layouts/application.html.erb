@@ -9,9 +9,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style='min-height: 100vh;'>
     <%= render 'layouts/header' %>
-    <main style="min-height: 80%;">
+    <main style="min-height: 80vh;">
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>

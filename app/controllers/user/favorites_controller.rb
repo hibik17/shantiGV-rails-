@@ -1,4 +1,5 @@
 class User::FavoritesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @user_fav = Array.new
     current_user.favorites.each do |fav|
