@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
       end
     end
     def after_sign_out_path_for(resource)
+      binding.pry
       if resource == :admin
         root_path
       else
