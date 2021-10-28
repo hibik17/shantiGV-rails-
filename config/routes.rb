@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'users/index'
-  end
   root :to => 'user/homes#top'
 
   devise_for :admins, controllers: {
@@ -15,6 +12,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :countries, only: [:index, :create, :destroy]
     resources :genres, only: [:index, :create, :destroy]
+    resources :posts, only: [:index, :destroy]
+    get 'posts/search'
+    post 'posts/search'
     get 'countries/country_search'
     post 'countries/country_search'
     get 'genres/genre_search'
