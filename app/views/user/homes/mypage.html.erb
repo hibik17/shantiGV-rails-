@@ -4,6 +4,6 @@
   </div>
   <div class="ui horizon divider"></div>
   <div style="margin-top: 30px" id="user_posts">
-    <%= render 'user/homes/user_posts', posts: @posts %>
+    <%= render 'user/homes/user_posts', posts: @posts, user: current_user %>
   </div>
 </div>
