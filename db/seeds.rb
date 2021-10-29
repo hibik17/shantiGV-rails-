@@ -29,21 +29,22 @@
 #   )
 # end
 
-countries = ['インドネシア', 'カンボジア', 'フィリピン']
+Country.create!(
+  name: 'インドネシア'
+)
+Country.create!(
+  name: 'カンボジア'
+)
+Country.create!(
+  name: 'タイ'
+)
 
-countries.each do |country|
-  Country.create!(
-    name: country
-  )
-end
-
-genres = ['お金に関して', '現地の人に関して']
-
-genres.each do |genre|
-  Genre.create!(
-    name: genre
-  )
-end
+Genre.create!(
+  name: 'お金について'
+)
+Genre.create!(
+  name: '現地でのボランティアについて'
+)
 
 Admin.create!(
   name: 'admin',
