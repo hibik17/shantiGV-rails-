@@ -29,7 +29,7 @@
 #   )
 # end
 
-# countries = ['インドネシア', 'カンボジア', 'フィリピン']
+countries = ['インドネシア', 'カンボジア', 'フィリピン']
 
 countries.each do |country|
   Country.create!(
