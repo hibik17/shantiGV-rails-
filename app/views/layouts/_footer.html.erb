@@ -1,5 +1,5 @@
-<% if params[:controller] != "user/homes" %>
-  <div class="ui footer center aligned">
+<% if params[:controller] != "user/homes" && params[:not_found] == nil && params[:prompt] == nil%>
+  <div class="ui footer center masthead aligned">
     <div class="ui horizontal divider">
       <div>&copy; shanti shanti</div>
     </div>
