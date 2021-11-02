@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def routing_error
     raise ActionController::RoutingError, params[:path]
   end
-  
+
   def after_sign_in_path_for(resouce)
     case resouce
     when Admin
@@ -20,11 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    if resource == :admin
-      new_admin_session_path
-    else
-      new_user_session_path
-    end
+    root_path
   end
 
 
