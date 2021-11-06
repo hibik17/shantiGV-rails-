@@ -1,18 +1,18 @@
 GIT
+  remote: https://github.com/JunichiIto/refile.git
+  revision: 3b076619ddae3e9a3073345e62d43c53b4c12b55
+  branch: use-env-secret-key-base
+  specs:
+    refile (0.7.0)
+      mime-types
+      sinatra (>= 2.0.0, <= 3.0.0)
+
+GIT
   remote: https://github.com/doabit/semantic-ui-sass.git
   revision: b5266bddd7f048695c81f0e00bdd3d6b099b1d7f
   specs:
     semantic-ui-sass (2.4.4.0)
       sassc
-
-GIT
-  remote: https://github.com/manfe/refile.git
-  revision: 46b4178654e60bb5846b1423acf6d0740cdecc25
-  specs:
-    refile (0.6.2)
-      mime-types
-      rest-client (~> 2)
-      sinatra (~> 2.0.0.beta2)
 
 GEM
   remote: https://rubygems.org/
@@ -98,8 +98,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
@@ -129,10 +127,7 @@ GEM
     globalid (0.5.2)
       activesupport (>= 5.0)
     hashie (4.1.0)
-    http-accept (1.7.0)
-    http-cookie (1.0.4)
-      domain_name (~> 0.5)
-    i18n (1.8.10)
+    i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
     jbuilder (2.11.2)
@@ -179,12 +174,13 @@ GEM
     multipart-post (2.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     nokogiri (1.12.5-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
@@ -203,7 +199,7 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 2.0)
       omniauth-oauth2 (~> 1.7.1)
-    omniauth-oauth2 (1.7.1)
+    omniauth-oauth2 (1.7.2)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
     omniauth-rails_csrf_protection (1.0.0)
@@ -222,7 +218,7 @@ GEM
     puma (3.12.6)
     racc (1.6.0)
     rack (2.2.3)
-    rack-protection (2.0.8.1)
+    rack-protection (2.1.0)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -264,11 +260,6 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rest-client (2.1.0)
-      http-accept (>= 1.7.0, < 2.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
     rexml (3.2.5)
     ruby2_keywords (0.0.5)
     ruby_dep (1.5.0)
@@ -290,10 +281,10 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
-    sinatra (2.0.8.1)
+    sinatra (2.1.0)
       mustermann (~> 1.0)
-      rack (~> 2.0)
-      rack-protection (= 2.0.8.1)
+      rack (~> 2.2)
+      rack-protection (= 2.1.0)
       tilt (~> 2.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
@@ -317,9 +308,6 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.8)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (3.7.0)

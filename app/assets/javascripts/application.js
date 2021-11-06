@@ -40,7 +40,7 @@ $(document).on("turbolinks:load", function () {
   });
 });
 
-$(document).on("ready", function () {
+$(document).on("turbolinks:load", function () {
   $(".full-screen").slick({
     centerMode: true,
     centerPadding: "5%",

@@ -77,8 +77,8 @@ gem 'jquery-rails'
 gem 'rails-i18n'
 
 # image file administration
-gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+gem "refile", require: "refile/rails", github: "JunichiIto/refile", branch: "use-env-secret-key-base"
 
 #debug tool
 gem 'pry-rails'
