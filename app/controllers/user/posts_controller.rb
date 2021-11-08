@@ -98,7 +98,7 @@ class User::PostsController < ApplicationController
   def correct_user
     
     @post_user = Post.find(params[:id]).user
-    if ≈
+    if @post_user != current_user
       flash[:notice] = "権限がありません。編集権限を管理者にお問い合わせください。"
       user_posts_path
     end
