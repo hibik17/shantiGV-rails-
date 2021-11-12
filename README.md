@@ -1,11 +1,16 @@
 ## GVReviewApp
-- auther(tatsuno hibiki)
+- auther(hibik17)
 - date(2021/10 ~ 2021/11)
 
 ## Description
 - habitat for humanityと共同で行っている海外派遣ボランティアの活動の記録を残すサイト
 
+## deploy
+- heroku
+  - [GvReviewApp](http://gvreview.herokuapp.com/)
+
 ## lauguage
+- ruby(2.6.8)
 - Ruby on rails (5.2.5) 
 - Javascript(jquery)
 - css(semantic UI)
@@ -29,6 +34,7 @@
 - topページに実際のボランティア記録のスライドショーを実装
 - 会員の管理は論理実装を採用
 - ページングの実装
+- エラーメッセージの日本語化
 ### 管理者側の実装
 - 全会員の管理（悪質な会員を非会員に変更)
 - 会員の検索を実装
@@ -38,4 +44,14 @@
 - 投稿に対する国の追加
 
 ## Gem
+- kaminari(ページング）
+- paranoia(論理削除）
+- rails-i18n(エラーメッセージの日本語化）
+- omniauth-google-oauth2(google auth）
+- devise(会員登録）
+- dotenv-rails(APIkey管理）
 
+## Start!
+1. ```bundle install```
+2. ```rails db:migrate```
+3. ```rails s```
