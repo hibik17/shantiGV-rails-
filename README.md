@@ -17,7 +17,7 @@
 
 ## Improvement　Tool
 - プロダクトのフィードバックツール
-  - [google　questionnaire](https://docs.google.com/forms/d/1TeX5Ub71cEIvDSZjP9Sbm4qZ_BtMrmZipzUUGVUdWK8/prefill)
+  - [googleQuestionnaire](https://docs.google.com/forms/d/1TeX5Ub71cEIvDSZjP9Sbm4qZ_BtMrmZipzUUGVUdWK8/prefill)
 - Todoの管理
   - [trello](https://trello.com/invite/b/D1rK8EKe/c7feaf598e1caa4676bc2ba77f3bdc5d/portfolio)
 
@@ -55,3 +55,9 @@
 1. ```bundle install```
 2. ```rails db:migrate```
 3. ```rails s```
+
+## 管理者情報
+- username
+  - *admin*
+- password
+  - *admin@gmail.com*
