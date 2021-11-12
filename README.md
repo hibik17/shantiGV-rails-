@@ -1,10 +1,12 @@
 ## GVReviewApp
 
-- Description
-  - habitat for humanityと共同で行っている海外派遣ボランティアの活動の記録を残すサイト
-Ruby on rails (5.2.5) 
-Javascript
-css(semantic UI)
+## Description
+- habitat for humanityと共同で行っている海外派遣ボランティアの活動の記録を残すサイト
+
+## lauguage
+- Ruby on rails (5.2.5) 
+- Javascript
+- css(semantic UI)
 
 
 Usage
