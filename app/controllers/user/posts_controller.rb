@@ -2,25 +2,25 @@ class User::PostsController < ApplicationController
 
   before_action :correct_user, only: [:edit, :update, :delete]
   before_action :authenticate_user!
-
+  
   def new
     @post = Post.new
     @genres = Genre.all
   end
-
+  
   def index
     @posts = Post.all.order(created_at: :desc).page(params[:page])
     @paginate_active = true
   end
-
+  
   def show
     @post = Post.find(params[:id])
   end
-
+  
   def edit
     @post = Post.find(params[:id])
   end
-
+  
   def create
     @post = Post.new(post_parameter)
     @post.user_id = current_user.id
@@ -36,7 +36,8 @@ class User::PostsController < ApplicationController
         @post.post_user = current_user.nick_name
       end
     end
-
+    
+    binding.pry
     if @post.save
       flash[:notice] = "投稿に成功しました"
       redirect_to user_post_path(@post)

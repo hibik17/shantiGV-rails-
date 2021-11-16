@@ -78,7 +78,7 @@ gem 'rails-i18n'
 
 # image file administration
 gem "refile-mini_magick"
-gem "refile", require: "refile/rails", github: "JunichiIto/refile", branch: "use-env-secret-key-base"
+gem "refile", require: "refile/rails", github: 'manfe/refile'
 
 #debug tool
 gem 'pry-rails'
