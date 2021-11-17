@@ -87,6 +87,7 @@ class User::PostsController < ApplicationController
     @posts = @posts.uniq
     @paginate_active = false
     render :index
+    # init
   end
 
   private
