@@ -36,8 +36,6 @@ class User::PostsController < ApplicationController
         @post.post_user = current_user.nick_name
       end
     end
-    
-    binding.pry
     if @post.save
       flash[:notice] = "投稿に成功しました"
       redirect_to user_post_path(@post)
