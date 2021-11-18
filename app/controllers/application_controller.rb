@@ -23,6 +23,9 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  # refile
+  Refile.secret_key = '6fdc2aebab92c6bac73dbb89fc2d9aed0483f12b67ce3e11c630e263e6f8962c0a05c7755915675318fe0eaf0ae1f312b77af2cc7128c6ac3c882007fbfee737'
+
 
   protected
     def configure_permitted_parameters
@@ -33,4 +36,5 @@ class ApplicationController < ActionController::Base
     def _render_404(e = nil)
       render 'errors/404'
     end
+
 end
