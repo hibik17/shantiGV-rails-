@@ -3,8 +3,8 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="ui form" style="margin-top: 30px;">
       <div class="field">
-        <%= f.label "name" %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name",placeholder: "name" %>
+        <%= f.label "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "email" %>
       </div>
       <div class="field">
         <%= f.label :password %><br />
