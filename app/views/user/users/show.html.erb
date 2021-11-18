@@ -13,7 +13,11 @@
           <div class="ui dimmer">
             <div class="content">
               <div class="center">
-                <%= render 'user/relationships/follow', user: @user %>
+                <% if @user != current_user %>
+                  <%= render 'user/relationships/follow', user: @user %>
+                <% else %>
+                  <%= link_to 'edit', edit_user_user_path(current_user.id), class: 'ui button primary'%>
+                <% end %>
               </div>
             </div>
           </div>
